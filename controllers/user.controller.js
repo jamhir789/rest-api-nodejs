@@ -1,23 +1,21 @@
-const {response, request} = require('express')
+const { response, request } = require('express');
+const User = require('../models/user');
 
-
-const userGet =  (req = request, res) => {
-    
-const query = req.query;
-
+const userGet = (req = request, res) => {
+    const query = req.query;
     res.json({
         msg: 'Get',
         query
     })
 }
 
-const userPost = (req, res = response) => {
-    const {nombre, edad} = req.body;
-
+const userPost = async (req, res = response) => {
+    const body = req.body;
+    const usuario = new User(body);
+    await usuario.save();
     res.json({
         msg: 'Post',
-        nombre,
-        edad
+        usuario
     })
 }
 
