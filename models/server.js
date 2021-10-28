@@ -26,7 +26,7 @@ async conectarDB(){
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log('servidor corriendo');
+        
         })
     }
 
